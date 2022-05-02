@@ -1,0 +1,50 @@
+<!--
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 13th 2022
+ * @CourseName Web Application Development SEC005
+-->
+
+<!-- Index Page -->
+     <!-- Main Content -->
+     <body class="body-background">
+     <main class="container">
+             <div class="justify-content-start">
+                 <!-- Website-Introduction -->
+                 <h3>{{ title }}</h3>
+                 <br>
+                 <p>Moonster Tourney is a free tournament management tool that is aiming to bringing players, tournament organizers and fans closer together. We are enthusiastic to provide accessible and friendly tools that bring your tournaments to the next level.</p>
+                 <div class ="text-align-center mt-5">
+                     <a class="btn btn-orange" [routerLink]="['/tournament/add']" role="button"><i class="fas fa-plus"></i> <b>Create Tournament</b></a>
+                 </div>
+             </div>
+             <div class="justify-content-start mt-5">
+                 <!-- Recent Tournaments -->
+                 <h3>Highlighted Active Tournaments</h3>
+                 <br>
+                 <div class="tournament-cards-wrapper">
+                    <!--<div class="tournament-card">
+                        <img src="/assets/images/sports.png" alt="" width="320" height="140">
+                        <div class="tournament-details">
+                           <h5 class="tournament-title-font">Testing title</h5>
+                           <p class="tournament-date-font"><i class="fa solid fa-calendar"></i> Testing Start Date - Testing End Date</p>
+                           <p>Testing Description</p>
+                           <p class="tournament-player-font">Testing Players</p>
+                        </div>
+                    </div>-->
+                    
+                     <div class="tournament-card" *ngFor='let tournament of tournaments'>
+                         <img src="/assets/images/sports.png" alt="" width="320" height="140">
+                         <div class="tournament-details">
+                            <h5 class="tournament-title-font">{{ tournament.title }}</h5>
+                            <p class="tournament-date-font"><i class="fa solid fa-calendar"></i> {{ getSplittedISODateString(tournament.startDate!) }} - {{ getSplittedISODateString(tournament.endDate!) }}</p>
+                            <p>{{ tournament.description }}</p>
+                            <p class="tournament-player-font">Players: {{ tournament.players }}</p>
+                         </div>
+                     </div>
+                     
+             </div>
+         </div>
+     </main>
+    </body>

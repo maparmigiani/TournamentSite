@@ -1,0 +1,50 @@
+<!--
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 29th 2022
+ * @CourseName Web Application Development SEC005
+-->
+
+<!-- Comment List Page -->
+
+<body class="body-background">
+    <!-- Main Content -->
+    <main class="container">
+        <div class="justify-content-start">
+            <!-- Website-Introduction -->
+            <h3>{{ title }}</h3>
+            <br>
+            
+            <!--Button Session-->
+            <div class="d-flex justify-content-end align-items-center">">
+                <button *ngIf='isLoggedIn()' class="btn btn-orange me-2" (click)='addComment(topic._id!)'><i class="fas fa-plus"></i> <b>Add Comment</b></button>
+                <a href="/forum/topic" class="btn btn-light" role="button"><b>Back</b></a>
+            </div>
+
+            <!--Topic Session-->
+            <div class="card mt-3 mb-3 bg-dark text-light border border-light border-2 rounded text-start">
+                <div class="card-header">
+                    <div class="mr-4 mt-2">
+                        <h5>{{topic.topicTitle}}</h5>
+                        <p class="forum-date"> Posted by {{topic.username}} on {{ getSplittedISODateString(topic.date!) }}</p>
+                        <p class="card-text">{{topic.content}}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Comment List Session-->
+            <div *ngFor='let comment of comments'>
+                <div class="card mt-3 mb-3 text-light border border-light rounded">
+                    <div class="btn card-title d-flex text-start" onclick="">
+                        <div class="mr-4 mt-1">
+                            <h6>{{comment.title}}</h6>
+                            <p class="forum-date"> Posted by {{comment.username}} on {{ getSplittedISODateString(comment.date!) }}</p>
+                            <p class="card-text text-dark">{{comment.content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>

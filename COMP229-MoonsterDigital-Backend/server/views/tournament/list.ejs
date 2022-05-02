@@ -1,0 +1,105 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+<%- include ../partials/body.ejs %>
+
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <div class="">
+            <h1 style="color:white;"><%= title %></h1>
+
+                <a href="/tournament/add" class="btn btn-primary" role="button">
+                <i class="fas fa-plus-circle"></i> Add tournament information</a>
+            <br>
+
+            <table style="position:relative; top:10px;" id="sortTable" class="table table-sortable table-bordered table-striped table-light table-hover">
+                <!-- Header Row-->
+                <tr class="d-flex">
+                    <% if(typeof displayName == 'string' && displayName) { %>
+                        <th class="text-center col-1">Owner</th>
+                        <th class="text-center col-1">Title</th>
+                        <th class="text-center col-2">Description</th>
+                        <th class="text-center col-1">Active </th>
+                        <th class="text-center col-1">Completed</th>
+                        <th class="text-center col-1">Players</th>
+                        <th class="text-center col-1">StartDate </th>
+                        <th class="text-center col-1">EndDate</th>
+                        <th class="text-center col-1">Rounds</th>
+
+                    <% } else { %>
+                        <th class="text-center col-1">Owner</th>
+                        <th class="text-center col-1">Title</th>
+                        <th class="text-center col-2">Description</th>
+                        <th class="text-center col-1">Active </th>
+                        <th class="text-center col-1">Completed</th>
+                        <th class="text-center col-1">Players</th>
+                        <th class="text-center col-1">StartDate </th>
+                        <th class="text-center col-1">EndDate</th>
+                        <th class="text-center col-1">Rounds</th>          
+                    <% } %>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <% for(let count = 0; count < Tournament.length; count++) { %>
+                    <tr class="d-flex">
+                        <% if(typeof displayName == 'string' && displayName) { %>
+                            <td class="text-center col-1"><%= Tournament[count].owner %></td>
+                            <td class="text-center col-1"><%= Tournament[count].title %></td>
+                            <td class="text-center col-2"><%= Tournament[count].description %></td>
+                            <td class="text-center col-1"><%= Tournament[count].isActive %></td>
+                            <td class="text-center col-1"><%= Tournament[count].isCompleted %></td>
+                            <td class="text-center col-1"><%= Tournament[count].players %></td>
+                            <td class="text-center col-1"><%= Tournament[count].startDate.toDateString(); %></td>
+                            <td class="text-center col-1"><%= Tournament[count].endDate.toDateString(); %></td>
+                            <td class="text-center col-1"><%= Tournament[count].rounds %></td>
+       
+                            <td class="text-center col-1">
+                                <a href="/tournament/edit/<%= Tournament[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Update</a>
+                            </td>
+                            <td class="text-center col-1">
+                                <a href="/tournament/delete/<%= Tournament[count]._id %>" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete</a>
+                            </td>
+                         <% } else { %>
+                          <td class="text-center col-1"><%= Tournament[count].owner %></td>
+                          <td class="text-center col-1"><%= Tournament[count].title %></td>
+                          <td class="text-center col-2"><%= Tournament[count].description %></td>
+                          <td class="text-center col-1"><%= Tournament[count].isActive %></td>
+                          <td class="text-center col-1"><%= Tournament[count].isCompleted %></td>
+                          <td class="text-center col-1"><%= Tournament[count].players %></td>
+                          <td class="text-center col-1"><%= Tournament[count].startDate.toDateString(); %></td>
+                          <td class="text-center col-1"><%= Tournament[count].endDate.toDateString(); %></td>
+                          <td class="text-center col-1"><%= Tournament[count].rounds %></td>
+
+                                 
+                            <td class="col-1">
+                                <a href="/tournament/edit/<%= Tournament[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Update</a>
+                            </td>
+                            <td class="col-1">
+                                <a href="/tournament/delete/<%= Tournament[count]._id %>" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete</a>
+                            </td>
+
+                         <% } %>
+                    </tr>
+                <% } %>
+            </table>
+
+        </div>
+    </div>
+  </main>
+  
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
+

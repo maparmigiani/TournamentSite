@@ -1,0 +1,42 @@
+<body class="body-background">
+
+  <div class="tournament-container">
+    <div class="tournament-headers">
+      <h3 style="color:black;background: orange;">Quarter-Finals</h3>
+      <h3 style="color:black;background: orange;">Semi-Finals</h3>
+      <h3 style="color:black;background: orange;">Final</h3>
+      <h3 style="color:black;background: orange;">Winner</h3>
+    </div>
+
+    <div class="tournament-brackets">
+      <ul class="bracket bracket-1">
+        <li class="team-item">{{player1}}</li>
+        <li class="team-item">{{player2}}</li>
+        <li class="team-item">{{player3}}</li>
+        <li class="team-item">{{player4}}</li>
+        <li class="team-item">{{player5}}</li>
+        <li class="team-item">{{player6}}</li>
+        <li class="team-item">{{player7}}</li>
+        <li class="team-item">{{player8}}</li>
+      </ul>
+      <ul class="bracket bracket-2">
+        <li class="team-item">{{player9}}</li>
+        <li class="team-item">{{player10}}</li>
+        <li class="team-item">{{player11}}</li>
+        <li class="team-item">{{player12}}</li>
+      </ul>
+      <ul class="bracket bracket-3">
+        <li class="team-item">{{player13}}</li>
+        <li class="team-item">{{player14}}</li>
+      </ul>
+      <ul class="bracket bracket-4">
+        <li class="team-item">{{player15}}</li>
+      </ul>
+    </div>
+
+    <!--Back Button-->
+    <div class="d-flex flex-row justify-content-center">
+      <button type='button' class="btn btn-secondary m-3" (click)='returnToTournamentList()'> Back</button>
+    </div>
+  </div>
+</body>

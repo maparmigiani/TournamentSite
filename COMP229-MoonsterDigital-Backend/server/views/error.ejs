@@ -1,0 +1,24 @@
+<%/**
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 13th 2022
+ * @CourseName Web Application Development SEC005
+ */%>
+
+ <!-- Error Page -->
+<%- include partials/header.ejs %>
+<%- include partials/main_nav.ejs %>
+<%- include partials/body.ejs %>
+    <!-- Main Content -->
+    <main class="container">
+      <div>
+        <h3>Opps, you are at the <%= title %> page<h3>
+        <p class="lead"> Please click the navigation bar to go back.</p>
+        <h3><%= message %></h3>
+        <p class="lead"><%= error.status %></p>
+        <p style="font-size:medium"><%= error.stack %></p>
+      </div>
+    </main>
+<%- include partials/bottom_nav.ejs %>
+<%- include partials/footer.ejs %>

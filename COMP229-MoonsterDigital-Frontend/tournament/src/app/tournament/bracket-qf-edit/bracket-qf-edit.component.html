@@ -1,0 +1,68 @@
+<!--
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Apr 15th 2022
+ * @CourseName Web Application Development SEC005
+-->
+
+<!-- Quarter Finals Page -->
+<!-- Main Content -->
+
+<body class="body-background">
+  <div class="tournament-container">
+    <div class="tournament-headers">
+      <h3 style="color:black;background: orange;">{{title}}</h3>
+    </div>
+
+    <!-- Form -->
+    <form class="form" [formGroup]="winnerForm" (ngSubmit)="onSubmit()">
+      <div class="tournament-brackets">
+        <ul class="bracket bracket-1">
+          <li class="team-item">{{player1}}</li>
+          <li class="team-item">{{player2}}</li>
+          <li class="team-item">{{player3}}</li>
+          <li class="team-item">{{player4}}</li>
+          <li class="team-item">{{player5}}</li>
+          <li class="team-item">{{player6}}</li>
+          <li class="team-item">{{player7}}</li>
+          <li class="team-item">{{player8}}</li>
+        </ul>
+        <ul *ngIf='!isLoggedIn()' class="bracket bracket-2">
+          <li class="team-item">{{team1}}</li>
+          <li class="team-item">{{team2}}</li>
+          <li class="team-item">{{team3}}</li>
+          <li class="team-item">{{team4}}</li>
+        </ul>
+        <ul *ngIf='isLoggedIn()' class="bracket bracket-2">
+            <select class="form-select" style="width: 600px;" formControlName="team1" name="team1" id="team1Select">
+              <option style="text-align:center" value="null" disabled>Select Winner</option>
+              <option style="text-align:center" value="one">{{player1}}</option>
+              <option style="text-align:center" value="two">{{player2}}</option>
+            </select>
+            <select class="form-select" style="width: 600px;" formControlName="team2" name="team2" id="team2Select">
+              <option style="text-align:center" value="null" disabled>Select Winner</option>
+              <option style="text-align:center" value="one">{{player3}}</option>
+              <option style="text-align:center" value="two">{{player4}}</option>
+            </select>
+            <select class="form-select" style="width: 600px;" formControlName="team3" name="team3" id="team3Select">
+              <option style="text-align:center" value="null" disabled>Select Winner</option>
+              <option style="text-align:center" value="one">{{player5}}</option>
+              <option style="text-align:center" value="two">{{player6}}</option>
+            </select>
+            <select class="form-select" style="width: 600px;" formControlName="team4" name="team4" id="team4Select">
+              <option style="text-align:center" value="null" disabled>Select Winner</option>
+              <option style="text-align:center" value="one">{{player7}}</option>
+              <option style="text-align:center" value="two">{{player8}}</option>
+            </select>
+        </ul>
+      </div>
+      <div *ngIf='isLoggedIn()' class="d-flex flex-row justify-content-center">
+        <!--Cancel Button-->
+        <button type='reset' class="btn btn-secondary m-3" (click)='returnToTournamentList()'> Cancel</button>
+        <!--Submit Button-->
+        <button class="btn btn-primary m-3" type='submit' [disabled]="!enableSubmission"> Submit</button>
+      </div>
+    </form>
+  </div>
+</body>

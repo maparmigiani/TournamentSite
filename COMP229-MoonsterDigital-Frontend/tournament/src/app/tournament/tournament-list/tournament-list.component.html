@@ -1,0 +1,173 @@
+<!--
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 30th 2022
+ * @CourseName Web Application Development SEC005
+-->
+
+<!-- Index Page -->
+<!-- Main Content -->
+
+<body class="body-background">
+    <main class="container">
+        <div class="justify-content-start">
+            <!-- Website-Introduction -->
+            <h3>{{ title }}</h3>
+            <div class="d-flex justify-content-end align-items-center">
+                <a class="btn btn-orange" [routerLink]="['/tournament/add']" role="button"><i class="fas fa-plus"></i>
+                    <b>Create
+                        Tournament</b></a>
+
+            </div>
+        </div>
+        <table style="position:relative; top:10px;" id="sortTable"
+            class="table table-sortable table-striped table-light table-hover table-sm">
+            <thead>
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center col-1">Owner</th>
+                    <th class="text-center col-1">Title</th>
+                    <th class="text-center col-2">Description</th>
+                    <th class="text-center col-1">Active </th>
+                    <th class="text-center col-1">Completed</th>
+                    <th class="text-center col-2">Players</th>
+                    <th class="text-center col-1">Start Date </th>
+                    <th class="text-center col-1">End Date</th>
+                    <th *ngIf='isLoggedIn()' class="text-center col-1">Edit</th>
+                    <th *ngIf='isLoggedIn()' class="text-center col-1">Players</th>
+                    <th *ngIf='isLoggedIn()' class="text-center col-1">Round 1</th>
+                    <th *ngIf='isLoggedIn()' class="text-center col-1">Round 2</th>
+                    <th *ngIf='isLoggedIn()' class="text-center col-1">Round 3</th>
+                    <th class="text-center col-1">View Result </th>
+                    <th *ngIf='isLoggedIn()' class="text-center col-1">Delete</th>
+                </tr>
+            </thead>
+            <!-- Repeatable Template Row -->
+            <tbody>
+                <tr *ngFor='let tournament of tournaments'>
+                    <td class="text-center col-1">
+                        {{ tournament.owner }}
+                    </td>
+                    <td class="text-center col-1">
+                        {{ tournament.title }}
+                    </td>
+                    <td class="text-center col-2">
+                        {{ tournament.description }}
+                    </td>
+                    <td class="text-center col-1">
+                        {{ tournament.isActive }}
+                    </td>
+                    <td class="text-center col-1">
+                        {{ tournament.isCompleted }}
+                    </td>
+
+                    <td class="text-center col-2">
+                        {{ tournament.players }}
+                    </td>
+                    <td class="text-center col-1">
+                        {{ getSplittedISODateString(tournament.startDate!) }}
+                    </td>
+                    <td class="text-center col-1">
+                        {{ getSplittedISODateString(tournament.endDate!) }}
+                    </td>
+                    <!--<td class="text-center col-1">
+                        {{ tournament.rounds }}
+                    </td>-->
+
+                    <!--Edit-->
+                    <td *ngIf='isOwner(tournament.owner!); else disableEdit' class="text-center col-1">
+                        <button class="btn btn-sm btn-primary m-1" (click)='editTournament(tournament._id!)'>
+                            <i class="fas fa-pencil-alt"></i> Edit
+                        </button>
+                    </td>
+                    <ng-template #disableEdit>
+                        <td *ngIf='isLoggedIn()' class="text-center col-1">
+                            <button class="btn btn-sm btn-secondary m-1" disabled>
+                                <i class="fas fa-pencil-alt"></i> Edit
+                            </button>
+                        </td>
+                    </ng-template>
+
+                    <!--Register Player-->
+                    <td *ngIf='isOwner(tournament.owner!); else disablePlayer' class="text-center col-1">
+                        <button class="btn btn-sm btn-dark m-1" (click)='registerPlayers(tournament._id!)'>
+                            <i class="fas fa-fas fa-user-plus"></i> Register Players
+                        </button>
+                    </td>
+                    <ng-template #disablePlayer>
+                        <td *ngIf='isLoggedIn()' class="text-center col-1">
+                            <button class="btn btn-sm btn-secondary m-1" disabled>
+                                <i class="fas fa-fas fa-user-plus"></i> Register Players
+                            </button>
+                        </td>
+                    </ng-template>
+
+                    <!--Round 1-->
+                    <td *ngIf='isOwner(tournament.owner!); else disableRound1' class="text-center col-1">
+                        <button class="btn btn-sm btn-dark m-1" (click)='editQuarterFinals(tournament._id!)'>
+                            <i class="fas fa-trophy"></i> Round 1
+                        </button>
+                    </td>
+                    <ng-template #disableRound1>
+                        <td *ngIf='isLoggedIn()' class="text-center col-1">
+                            <button class="btn btn-sm btn-secondary m-1" disabled>
+                                <i class="fas fa-trophy"></i> Round 1
+                            </button>
+                        </td>
+                    </ng-template>
+
+                    <!--Round 2-->
+                    <td *ngIf='isOwner(tournament.owner!); else disableRound2' class="text-center col-1">
+                        <button class="btn btn-sm btn-dark m-1" (click)='editSemiFinals(tournament._id!)'>
+                            <i class="fas fa-trophy"></i> Round 2
+                        </button>
+                    </td>
+                    <ng-template #disableRound2>
+                        <td *ngIf='isLoggedIn()' class="text-center col-1">
+                            <button class="btn btn-sm btn-secondary m-1" disabled>
+                                <i class="fas fa-trophy"></i> Round 2
+                            </button>
+                        </td>
+                    </ng-template>
+
+                    <!--Round 3-->
+                    <td *ngIf='isOwner(tournament.owner!); else disableRound3' class="text-center col-1">
+                        <button class="btn btn-sm btn-dark m-1" (click)='editFinals(tournament._id!)'>
+                            <i class="fas fa-trophy"></i> Round 3
+                        </button>
+                    </td>
+                    <ng-template #disableRound3>
+                        <td *ngIf='isLoggedIn()' class="text-center col-1">
+                            <button class="btn btn-sm btn-secondary m-1" disabled>
+                                <i class="fas fa-trophy"></i> Round 3
+                            </button>
+                        </td>
+                    </ng-template>
+
+                    <!--View Result-->
+                    <td class="text-center col-1">
+                        <button class="btn btn-sm btn-dark m-1" (click)='viewSummary(tournament._id!)'>
+                            <i class="fas fa-file"></i> View Result
+                        </button>
+                    </td>
+
+                    <!--Delete-->
+                    <td *ngIf='isOwner(tournament.owner!); else disableDelete' class="text-center col-1">
+                        <button class="btn btn-sm btn-danger m-1" (click)='deleteTournament(tournament._id!)'>
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </td>
+                    <ng-template #disableDelete>
+                        <td *ngIf='isLoggedIn()' class="text-center col-1">
+                            <button class="btn btn-sm btn-secondary m-1" disabled>
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </td>
+                    </ng-template>
+
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>

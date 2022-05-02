@@ -1,0 +1,95 @@
+<!--
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 30th 2022
+ * @CourseName Web Application Development SEC005
+-->
+
+<!-- Index Page -->
+<!-- Main Content -->
+
+<body class="body-background">
+    <main class="container">
+        <div class="row">
+          <div class="offset-md-3 col-md-6">    
+            <h3>{{title}} </h3>
+            <br>
+            <!-- Form -->
+            <form class="form" [formGroup]="tournamentForm" (ngSubmit)="onSubmit()">
+                <!--<fieldset class="form-group mb-3">
+                  <input type="hidden"
+                  name="id"
+                  value="<%= Tournament._id %>">
+                    <label class="form-label" for="ownerTextField">Owner</label>
+                    <input type="text" class="form-control" id="ownerTextField"
+                    name="owner" formControlName="owner" required>
+                  </fieldset>-->
+                <fieldset class="form-group mb-3">
+                  <label  class="form-label" for="titleTextField">Title</label>
+                  <input type="text" class="form-control" id="titleTextField"
+                  name="title" formControlName="title" required>
+                </fieldset>
+                <fieldset class="form-group mb-3">
+                  <label  class="form-label" for="descriptionTextField">Description</label>
+                  <textarea type="text" class="form-control" id="descriptionTextField"
+                  name="description" formControlName="description" required>{{ tournament.description }}</textarea>
+                </fieldset>
+                <!--
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField">Players</label>
+                    <input type="text" class="form-control" id="playersTextField"
+                    name="players" formControlName="players" required>
+                </fieldset>-->
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="startDateTextField">Start Date</label>
+                    <input type="date" class="form-control" id="startDateTextField"
+                    name="startDate" formControlName="startDate" required>
+                </fieldset>
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="endDateTextField">End Date</label>
+                    <input type="date" class="form-control" id="endDateTextField"
+                    name="endDate" formControlName="endDate" required>
+                </fieldset>
+                <!--
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="roundsTextField">Rounds</label>
+                    <input type="text" class="form-control" id="roundsTextField"
+                    name="rounds" formControlName="rounds" required>
+                </fieldset>-->
+                
+                <!--Check box Session-->
+                <fieldset class="form-group mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="isActiveCheckbox" name="isActive" formControlName="isActive">
+                    <label class="form-label" for="isActiveCheckbox">isActive</label>
+                  </div>
+                  <!--not use
+                  <label  class="form-label" for="priceTextField">Active</label>
+                  <input type="text" class="form-control" id="priceTextField"
+                  name="isActive" formControlName="isActive" required>-->
+                </fieldset>
+                <fieldset class="form-group mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="isCompletedCheckbox" name="isCompleted" formControlName="isCompleted">
+                    <label class="form-label" for="isCompletedCheckbox">isCompleted</label>
+                  </div>
+                  <!--not use
+                  <label class="form-label" for="isCompletedTextField">isCompleted</label>
+                  <input type="text" class="form-control" id="isCompletedTextField"
+                  name="isCompleted" formControlName="isCompleted" required>-->
+                </fieldset>
+
+                <!--Button Session-->
+                <div class="d-flex flex-row justify-content-center">
+                  <!--Cancel Button-->
+                  <button type='reset' class="btn btn-secondary m-3" (click)='returnToTournamentList()'> Cancel</button>
+                  <!--Submit Button-->
+                  <button class="btn btn-primary m-3" type='submit' [disabled]="!tournamentForm.valid"> {{ editing ? "Save" : "Add" }}</button>
+                </div>
+
+              </form>
+              </div>
+        </div>
+    </main>
+</body>

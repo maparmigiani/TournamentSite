@@ -1,0 +1,45 @@
+<%/**
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 13th 2022
+ * @CourseName Web Application Development SEC005
+ */%>
+
+ <!-- Index Page -->
+<%- include partials/header.ejs %>
+    <%- include partials/main_nav.ejs %>
+    <%- include partials/body.ejs %>
+        <!-- Main Content -->
+        <main class="container">
+            <div>
+                <div class="justify-content-start">
+                    <!-- Website-Introduction -->
+                    <h3><%= title %></h3>
+                    <br>
+                    <p>Moonster Tourney is a free tournament management tool that is aiming to bringing players, tournament organizers and fans closer together. We are enthusiastic to provide accessible and friendly tools that bring your tournaments to the next level.</p>
+                    <div class ="text-align-center mt-5">
+                        <a href="/tournament/add>" class="btn btn-orange" role="button"><i class="fas fa-plus"></i> <b>Create Tournament</b></a>
+                    </div>
+                </div>
+                <div class="justify-content-start mt-5">
+                    <!-- Recent Tournaments -->
+                    <h3>Highlighted Active Tournaments</h3>
+                    <br>
+                    <div class="tournament-cards-wrapper">
+                    <% for(let count = 0; count < Tournament.length; count++) { %>                    
+                        <div class="tournament-card">
+                            <img src="/Assets/images/sports.png" alt="" width="320" height="140">
+                            <div class="tournament-details">
+                                <h5 class="tournament-title-font"><%= Tournament[count].title %></h5>
+                                <p class="tournament-date-font"><i class="fa solid fa-calendar"></i> <%= Tournament[count].startDate %> - <%= Tournament[count].endDate %></p>
+                                <p><%= Tournament[count].description %></p>
+                                <p class="tournament-player-font">Players: <%= Tournament[count].players %></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+    <%- include partials/bottom_nav.ejs %>
+<%- include partials/footer.ejs %>

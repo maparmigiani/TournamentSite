@@ -1,0 +1,98 @@
+/**
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Mar 13th 2022
+ * @CourseName Web Application Development SEC005
+ */
+
+ body {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    min-height: 1054px;
+    background-color: #FFF;
+  }
+    p {
+      color: #c9c6c6;
+    }
+  
+    h3 {
+      color: #ffffff;
+    }
+
+.forum-date
+{
+  font-size: 0.8em;
+  color: gray;
+}
+
+.body-background {
+    background-color: #202020; 
+    background-image: url('/assets/images/bg.jpg');
+}
+    .form-label {
+      color: #c9c6c6;
+    }
+  
+    .btn-orange {
+      color: black;
+      background-color: #f36518;
+      border-color:#f36518;
+    }
+  
+    .btn-orange:hover,
+    .btn-orange:focus,
+    .btn-orange.focus {
+      color: black;
+      background-color: #f55904;
+      border-color:#f55904;
+    }
+  
+    .btn-orange.disabled,
+    .btn-orange:disabled {
+      color: black;
+      background-color: #db4e02;
+      border-color:#db4e02;
+    }
+  
+    .bottom-font {
+      font-size: 0.8em;
+    }
+  
+    .text-align-center {
+      text-align: center;
+    }
+  
+    .text-align-right {
+      text-align: right;
+    }
+  
+    .tournament-cards-wrapper{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  
+    .tournament-card {
+      background-color: black;
+      opacity: 0.7;
+      max-width: 320px;
+    }
+  
+    .tournament-details {
+      padding: 10px 20px 10px 20px;
+    }
+  
+    .tournament-title-font {
+      color: white;
+    }
+  
+    .tournament-date-font {
+      font-size: 0.9em;
+    }
+  
+    .tournament-player-font {
+      color: gray;
+      font-size: 0.8em;
+    }

@@ -1,0 +1,80 @@
+<!--
+ * @GroupName MoonsterDigital
+ * @FileName COMP229_W2022-Group4-MoonsterDigital
+ * @CourseCode COMP229
+ * @Date Apr 09th 2022
+ * @CourseName Web Application Development SEC005
+-->
+
+<!-- Index Page -->
+<!-- Main Content -->
+
+<body class="body-background">
+    <main class="container">
+        <div class="row">
+          <div class="offset-md-3 col-md-6">    
+            <h3> Player Registration </h3>
+            <br>
+            <!-- Form -->
+            <form class="form" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField1">Player 1</label>
+                    <input type="text" class="form-control" id="playersTextField1"
+                    name="player1" formControlName="player1" >
+                </fieldset>
+                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField2">Player 2</label>
+                    <input type="text" class="form-control" id="playersTextField2"
+                    name="player1" formControlName="player2">
+                </fieldset>
+                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField3">Player 3</label>
+                    <input type="text" class="form-control" id="playersTextField3"
+                    name="player1" formControlName="player3">
+                </fieldset>
+                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField4">Player 4</label>
+                    <input type="text" class="form-control" id="playersTextField4"
+                    name="player4" formControlName="player4">
+                </fieldset>
+                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField5">Player 5</label>
+                    <input type="text" class="form-control" id="playersTextField5"
+                    name="player5" formControlName="player5">
+                </fieldset>
+                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField6">Player 6</label>
+                    <input type="text" class="form-control" id="playersTextField6"
+                    name="player6" formControlName="player6">
+                </fieldset>
+                                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField7">Player 7</label>
+                    <input type="text" class="form-control" id="playersTextField7"
+                    name="player7" formControlName="player7">
+                </fieldset>
+                                
+                <fieldset class="form-group mb-3">
+                    <label class="form-label" for="playersTextField8">Player 8</label>
+                    <input type="text" class="form-control" id="playersTextField8"
+                    name="player8" formControlName="player8" >
+                </fieldset>
+
+                <!--Button Session-->
+                <div class="d-flex flex-row justify-content-center">
+                  <!--Cancel Button-->
+                  <button type='reset' class="btn btn-secondary m-3" (click)='returnToTournamentList()'> Cancel</button>
+                  <!--Submit Button-->
+                  <button class="btn btn-primary m-3" type='submit' [disabled]="!playerForm.valid"> Submit </button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </main>
+</body>
